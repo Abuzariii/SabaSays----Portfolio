@@ -6,7 +6,8 @@ export async function GET(req) {
   const id = CLIENT_ID;
   //   const id = 1;
   try {
-    return NextResponse.json({ message: id }, { status: 200 }, { id });
+    console.log(id);
+    return NextResponse.json({ message: id }, { status: 200 });
   } catch (error) {
     return NextResponse.json(
       { success: false, error: error.message },
