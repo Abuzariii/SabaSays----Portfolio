@@ -19,7 +19,7 @@ export default function Neon() {
         setData(data);
       }
     } catch (error) {
-      console.error("Error submitting form:", error.message);
+      console.error("Error submitting form:", error);
     }
   };
   return (
