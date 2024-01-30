@@ -1,6 +1,5 @@
 import Neon from "@/components/Experimental/NeonCheck";
 import Button from "@/components/Experimental/VercelVariables";
-import ImageUpload from "@/components/Experimental/ImageUpload";
 import BlobUpload from "@/components/Experimental/BlobImageUpload";
 
 export default function Home() {
@@ -8,7 +7,6 @@ export default function Home() {
     <div>
       <Button />
       <Neon />
-      {/* <ImageUpload /> */}
       <BlobUpload />
     </div>
   );

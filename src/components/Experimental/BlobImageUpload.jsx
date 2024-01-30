@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useState, useCallback } from "react";
 
 export default function BlobUpload() {
   const [data, setData] = useState({
@@ -29,7 +29,7 @@ export default function BlobUpload() {
   async function handleSubmit(e) {
     e.preventDefault();
     console.log(file);
-    fetch("/api/upload", {
+    fetch("/api/check_blob_upload", {
       method: "POST",
       headers: {
         "content-type": file ? file.type : "application/octet-stream",
@@ -37,10 +37,9 @@ export default function BlobUpload() {
       body: file,
     }).then(async (res) => {
       if (res.status === 200) {
-        // const { url } = await res.json();
-        // console.log(url);
-        const data = await res.json();
-        console.log(data.message);
+        const blob = await res.json();
+        console.log(blob);
+        console.log(blob.url);
       }
     });
   }

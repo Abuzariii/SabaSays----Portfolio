@@ -15,5 +15,5 @@ export async function POST(req) {
     access: "public",
     token,
   });
-  return NextResponse.json({ message: blob });
+  return NextResponse.json({ blob });
 }
