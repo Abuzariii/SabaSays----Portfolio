@@ -38,8 +38,7 @@ export default function BlobUpload() {
     }).then(async (res) => {
       if (res.status === 200) {
         const blob = await res.json();
-        console.log(blob);
-        console.log(blob.url);
+        console.log(blob.blob);
       }
     });
   }
