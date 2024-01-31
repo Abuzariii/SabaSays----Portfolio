@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useCallback } from "react";
+import { useState } from "react";
 
 export default function BlobUpload() {
   const [data, setData] = useState({
@@ -7,24 +7,21 @@ export default function BlobUpload() {
   });
   const [file, setFile] = useState(null);
 
-  const onChangePicture = useCallback(
-    (event) => {
-      const file = event.currentTarget.files && event.currentTarget.files[0];
-      if (file) {
-        if (file.size / 1024 / 1024 > 50) {
-          toast.error("File size too big (max 50MB)");
-        } else {
-          setFile(file);
-          const reader = new FileReader();
-          reader.onload = (e) => {
-            setData((prev) => ({ ...prev, image: e.target?.result }));
-          };
-          reader.readAsDataURL(file);
-        }
+  function onChangePicture(event) {
+    const file = event.currentTarget.files && event.currentTarget.files[0];
+    if (file) {
+      if (file.size / 1024 / 1024 > 10) {
+        toast.error("File size too big (max 10MB)");
+      } else {
+        setFile(file);
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          setData((prev) => ({ ...prev, image: e.target?.result }));
+        };
+        reader.readAsDataURL(file);
       }
-    },
-    [setData]
-  );
+    }
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
